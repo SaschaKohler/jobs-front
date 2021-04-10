@@ -8,10 +8,12 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { JobsService } from './jobs.service';
 import { AppRoutingModule } from './app-routing.module';
+import { JobComponentComponent } from './job-component/job-component.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    JobComponentComponent
    
   ],
   imports: [
@@ -20,9 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     CommonModule,
     FormsModule,
-    MarkdownModule.forRoot({
-      sanitize: SecurityContext.NONE
-    }),
+  
     AppRoutingModule,
     
   ],

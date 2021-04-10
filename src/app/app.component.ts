@@ -11,25 +11,35 @@ export class AppComponent implements OnInit {
   title = 'jobs-front';
 
   page: number;
-  searchstring: string;
+  searchString: string = '';
   loading: boolean;
   jobs: Job[] = [];
 
   constructor( private jobsService: JobsService) {}
 
   ngOnInit() {
-
+  
+    //this.fetchJobs();
+    this.jobsService.getallJobs().subscribe(
+      (jobs) =>{
+      this.jobs =jobs;
+      });
   }
 
-  previousPage
+  
+
+  submitSearch() {
+    this.fetchJobs();
+  }
 
   fetchJobs() {
     this.loading = true;
-    this.jobsService.list(this.page, this.searchstring).subscribe(
+    this.jobsService.list(this.searchString).subscribe(
       (jobs) => {
         this.jobs = jobs;
         this.loading = false;
       }
     )
+  
   }
 }
